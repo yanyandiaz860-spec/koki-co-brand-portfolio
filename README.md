@@ -16,7 +16,9 @@ Requires Node 18+ (tested with Node 24).
 
 ## Working on this with a collaborator
 
-Repo: https://github.com/yanyandiaz860-spec/koki-co-brand-portfolio (private: collaborators must be invited).
+Repo: https://github.com/yanyandiaz860-spec/koki-co-brand-portfolio (public: anyone can view and download. To push changes, ask the owner to add you as a collaborator.)
+
+No Git? Download the project: **Code → Download ZIP**, unzip, then run `npm install` and `npm run dev` inside the folder.
 
 First-time setup (needs [Git](https://git-scm.com) and [Node.js 18+](https://nodejs.org)):
 
