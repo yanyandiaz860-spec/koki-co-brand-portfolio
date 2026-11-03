@@ -1,0 +1,55 @@
+/* =====================================================================
+   kOKi.co — "The Cookie Box" design tokens
+   Canvas = dark chocolate. Content = rounded bento compartments.
+   ===================================================================== */
+:root {
+  /* Official brand palette */
+  --choc: #481c10;
+  --caramel: #ce8f59;
+  --orange: #f6a762;
+  --peach: #edaf7a;
+  --cream: #f7d5b4;
+
+  /* Warm neutrals derived from the palette (breathing room only) */
+  --paper: #fff4e6;
+  --white: #ffffff;
+  --choc-deep: #3a160c;           /* canvas shade for depth */
+  --ink: var(--choc);
+  --ink-2: rgb(72 28 16 / 0.82);  /* ≥ 8:1 on cream */
+  --ink-3: rgb(72 28 16 / 0.68);
+  --line: rgb(72 28 16 / 0.18);
+  --on-choc: #fbe6cf;
+  --on-choc-2: rgb(251 230 207 / 0.76);
+  --line-choc: rgb(247 213 180 / 0.16);
+
+  /* Type */
+  --f-display: 'Bricolage Grotesque Variable', 'Arial Black', system-ui, sans-serif;
+  --f-body: 'DM Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+
+  --t-xs: 0.75rem;
+  --t-sm: 0.875rem;
+  --t-base: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  --t-lg: clamp(1.1rem, 1.02rem + 0.35vw, 1.3rem);
+  --t-xl: clamp(1.4rem, 1.15rem + 1vw, 2.1rem);
+  --t-2xl: clamp(1.9rem, 1.3rem + 2.4vw, 3.4rem);
+  --t-chapter: clamp(2.5rem, 1.2rem + 5.4vw, 6.6rem);
+
+  /* Space & shape */
+  --gap: clamp(8px, 0.4rem + 0.4vw, 14px);
+  --frame: clamp(8px, 0.3rem + 0.5vw, 16px);
+  --pad: clamp(1.25rem, 0.8rem + 1.8vw, 2.6rem);
+  --r-tile: clamp(22px, 1rem + 1.4vw, 40px);
+  --r-in: clamp(14px, 0.6rem + 0.8vw, 24px);
+  --r-pill: 999px;
+  --maxw: 100vw; /* full-screen layout: content spans the whole viewport */
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+  --d-1: 180ms;
+  --d-2: 380ms;
+  --d-3: 650ms;
+
+  --nav-h: 76px;
+}

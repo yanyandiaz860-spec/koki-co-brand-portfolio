@@ -1,0 +1,132 @@
+/* =====================================================================
+   BANDS — each chapter is its own full-width color section,
+   separated by a scalloped "cookie bite" edge.
+   ===================================================================== */
+.band {
+  position: relative;
+  /* centre content at --maxw while the background runs full-bleed */
+  padding-inline: max(var(--frame), calc((100% - var(--maxw)) / 2 + var(--frame)));
+  padding-bottom: clamp(3.5rem, 2rem + 6vw, 8rem);
+  background: var(--band-bg);
+  --band-ink: var(--on-choc);
+  --band-ink-2: var(--on-choc-2);
+  --band-em: var(--orange);
+  --band-stroke: var(--orange);
+  --band-code-bg: var(--orange);
+  --band-code-ink: var(--choc);
+}
+.band--choc { --band-bg: var(--choc); }
+.band--cream,
+.band--orange,
+.band--peach {
+  --band-ink: var(--choc);
+  --band-ink-2: var(--ink-2);
+  --band-em: var(--choc);
+  --band-stroke: var(--choc);
+  --band-code-bg: var(--choc);
+  --band-code-ink: var(--on-choc);
+}
+.band--cream { --band-bg: var(--cream); }
+.band--orange { --band-bg: var(--orange); }
+.band--peach { --band-bg: var(--peach); }
+
+/* scalloped divider: the band "bites" into the section above */
+.band + .band::before,
+.footer::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -21px;
+  height: 22px;
+  background: radial-gradient(circle at 50% 100%, var(--band-bg) 0 15px, transparent 15.5px) 0 0 / 38px 22px repeat-x;
+  pointer-events: none;
+}
+.footer {
+  position: relative;
+  --band-bg: var(--choc);
+}
+
+/* chapter opener colors follow the band */
+.band .chapter-head,
+.band .row-head {
+  color: var(--band-ink);
+}
+.band .chapter-head__meta,
+.band .row-head__note {
+  color: var(--band-ink-2);
+}
+.band .chapter-head__code {
+  background: var(--band-code-bg);
+  color: var(--band-code-ink);
+}
+.band .chapter-head__n {
+  -webkit-text-stroke-color: var(--band-stroke);
+}
+.band .chapter-head__title em {
+  color: var(--band-em);
+}
+/* the hero band keeps its nav offset */
+.hero.band {
+  padding-top: calc(var(--nav-h) + var(--frame) + 4px);
+  padding-bottom: clamp(2rem, 1rem + 4vw, 5rem);
+  background:
+    radial-gradient(80vw 60vw at 100% 0%, rgb(206 143 89 / 0.18), transparent 60%),
+    var(--choc);
+}
+
+/* first-post feed bleeds edge to edge inside its band */
+.band .feed {
+  margin-inline: calc(50% - 50vw);
+}
+.band .feed .row-head,
+.band .marquee__controls {
+  padding-inline: max(calc(var(--frame) + 0.5rem), calc((100vw - var(--maxw)) / 2 + var(--frame) + 0.5rem));
+}
+
+/* tiles that changed tone inside light bands */
+.tile--choc .service__text {
+  color: var(--on-choc-2);
+}
+.tile--choc .service__icon {
+  background: var(--orange);
+  color: var(--choc);
+}
+.owner__ph {
+  background:
+    radial-gradient(circle, rgb(72 28 16 / 0.14) 2px, transparent 2.5px) 0 0 / 18px 18px,
+    var(--cream);
+}
+.owner:nth-child(even) .owner__ph {
+  background:
+    radial-gradient(circle, rgb(72 28 16 / 0.14) 2px, transparent 2.5px) 0 0 / 18px 18px,
+    var(--paper);
+}
+.tile--choc {
+  box-shadow: none;
+}
+.band--choc .tile--choc {
+  box-shadow: inset 0 0 0 1.5px var(--line-choc);
+}
+.chip--accent {
+  background: var(--orange);
+  color: var(--choc);
+  font-weight: 700;
+}
+.poster-stage__frame {
+  box-shadow: 0 50px 80px -40px rgb(0 0 0 / 0.7);
+}
+
+/* focus rings: orange on dark bands */
+.band--choc :focus-visible {
+  outline-color: var(--orange);
+  box-shadow: 0 0 0 7px rgb(246 167 98 / 0.3);
+}
+.band--choc .tile:not(.tile--choc) :focus-visible {
+  outline-color: var(--choc);
+  box-shadow: 0 0 0 7px var(--orange);
+}
+.band:not(.band--choc) .tile--choc :focus-visible {
+  outline-color: var(--orange);
+  box-shadow: 0 0 0 7px rgb(246 167 98 / 0.3);
+}

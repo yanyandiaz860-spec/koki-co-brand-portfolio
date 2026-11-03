@@ -1,0 +1,217 @@
+/* =====================================================================
+   PRODUCTS — hover card + modal
+   ===================================================================== */
+.pmenu {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.pmenu .menu__list {
+  flex: 1;
+}
+/* rows are buttons now; replace the old scaleX fill (it could stick mid-way) */
+.menu__item::before {
+  display: none;
+}
+.menu__item {
+  padding: 0;
+}
+.menu__btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  min-height: 52px;
+  padding: 0.7rem 0.75rem;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--d-2) var(--ease), padding var(--d-2) var(--ease);
+}
+.menu__item.is-active .menu__btn,
+.menu__btn:hover {
+  background: var(--orange);
+  padding-left: 1.1rem;
+}
+.menu__go {
+  margin-left: auto;
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity var(--d-2), transform var(--d-2) var(--ease);
+}
+.menu__item.is-active .menu__go,
+.menu__btn:hover .menu__go,
+.menu__btn:focus-visible .menu__go {
+  opacity: 1;
+  transform: none;
+}
+@media (hover: none) {
+  .menu__go {
+    opacity: 0.55;
+    transform: none;
+  }
+}
+
+/* shared card */
+.pcard {
+  overflow: hidden;
+  border-radius: var(--r-tile);
+  background: var(--choc-deep);
+  color: var(--on-choc);
+}
+.pcard__photo {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--cream);
+}
+.pcard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pcard__ph {
+  position: relative;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.6rem;
+  height: 100%;
+  color: var(--caramel);
+  background:
+    radial-gradient(circle, rgb(72 28 16 / 0.12) 2px, transparent 2.5px) 0 0 / 16px 16px,
+    var(--cream);
+}
+.pcard__ph svg {
+  width: 64px;
+  height: 64px;
+}
+.pcard__ph span {
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.pcard__ph .pcard__ph-n {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  font-family: var(--f-display);
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: rgb(72 28 16 / 0.18);
+}
+.pcard__body {
+  padding: 1.1rem 1.25rem 1.3rem;
+}
+.pcard__n {
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.pcard__name {
+  margin-top: 0.35rem;
+  font-family: var(--f-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.pcard__detail {
+  margin-top: 0.5rem;
+  font-size: var(--t-sm);
+  line-height: 1.45;
+  color: var(--on-choc-2);
+}
+
+/* floating hover card (desktop) */
+.pcard--float {
+  position: absolute;
+  right: 0;
+  z-index: 5;
+  width: min(320px, 42%);
+  pointer-events: none;
+  box-shadow: 0 30px 60px -20px rgb(58 22 12 / 0.55);
+  transform-origin: left center;
+}
+
+/* modal (tap / click) */
+.pmodal {
+  width: min(92vw, 420px);
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-tile);
+  background: transparent;
+  overflow: visible;
+}
+.pmodal::backdrop {
+  background: rgb(36 13 7 / 0.75);
+  backdrop-filter: blur(5px);
+}
+.pmodal[open] {
+  animation: pmIn 380ms var(--ease);
+}
+@keyframes pmIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+}
+.pcard--modal .pcard__name {
+  font-size: 2rem;
+}
+.pmodal__bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 1.25rem 1.25rem;
+}
+.pmodal__bar .btn {
+  min-height: 46px;
+  padding: 0 1rem;
+  font-size: 0.9rem;
+}
+.pmodal__bar .btn--ghost {
+  color: var(--on-choc);
+  border-color: rgb(251 230 207 / 0.4);
+}
+.pmodal__bar .btn--ghost:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--choc);
+}
+.pmodal__bar .btn--choc {
+  padding-right: 1rem;
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--choc);
+}
+.pmodal :focus-visible {
+  outline-color: var(--orange);
+  box-shadow: 0 0 0 6px rgb(246 167 98 / 0.3);
+}
+
+/* pointer-following card: positioned by x/y transforms from the top-left of the menu */
+.pcard--float {
+  right: auto;
+  left: 0;
+  top: 0;
+  width: 300px;
+  z-index: 50;
+  transform-origin: center;
+}

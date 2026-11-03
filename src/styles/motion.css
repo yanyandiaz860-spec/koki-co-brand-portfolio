@@ -1,0 +1,119 @@
+/* =====================================================================
+   SCROLL MOTION + SERVICE PICTURES
+   ===================================================================== */
+
+/* chapter title rises out of a mask */
+.chapter-head__mask {
+  display: block;
+  overflow: hidden;
+  padding: 0.08em 0.06em 0.14em;
+  margin: -0.08em -0.06em -0.14em;
+}
+.chapter-head__title {
+  display: block;
+}
+@media (max-width: 640px) {
+  .chapter-head__mask {
+    order: 3;
+    flex-basis: 100%;
+  }
+}
+
+/* media blocks that wipe open */
+.reveal-media {
+  display: block;
+  width: 100%;
+  border-radius: var(--r-in);
+  will-change: clip-path;
+}
+.poster-stage__reveal {
+  max-width: 1180px;
+}
+
+/* parallax frame */
+.px-frame {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.px-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* service cards with pictures */
+.service {
+  padding: var(--gap);
+  padding-bottom: 1.4rem;
+}
+.service__media {
+  aspect-ratio: 1 / 0.9;
+  overflow: hidden;
+  border-radius: calc(var(--r-tile) - var(--gap));
+  background: var(--white);
+}
+.service__title,
+.service__text {
+  padding-inline: 0.75rem;
+}
+.service__title {
+  margin-top: 1.1rem;
+}
+.service:hover .px-frame img {
+  filter: saturate(1.08);
+}
+.tile--choc .service__title {
+  color: var(--on-choc);
+}
+@media (max-width: 1099.98px) {
+  .service__media {
+    aspect-ratio: 4 / 3;
+  }
+}
+@media (max-width: 640px) {
+  .service {
+    grid-template-columns: 96px 1fr;
+    padding: var(--gap);
+    column-gap: 0.9rem;
+  }
+  .service__media {
+    grid-row: span 2;
+    aspect-ratio: 1;
+    border-radius: calc(var(--r-tile) - var(--gap) - 4px);
+  }
+  .service__title,
+  .service__text {
+    padding-inline: 0 0.5rem;
+  }
+}
+
+/* poster typography sits level with the palette beside it */
+.bento--poster .poster-palette,
+.bento--poster .poster-type {
+  align-self: stretch;
+}
+
+/* phones in landscape / short screens: size the hero by height so it fits */
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero__title {
+    font-size: min(9vw, 16vh);
+  }
+  .hero__main {
+    gap: 1.25rem;
+  }
+  .hero__media {
+    aspect-ratio: 21 / 9;
+  }
+  .chapter-head__title {
+    font-size: min(var(--t-chapter), 14vh);
+  }
+  .loader__tag {
+    font-size: min(7vw, 14vh);
+  }
+  .loader__count {
+    font-size: min(12vw, 26vh);
+  }
+}
