@@ -14,6 +14,37 @@ npm run preview    # serve the production build → http://localhost:4173
 
 Requires Node 18+ (tested with Node 24).
 
+## Working on this with a collaborator
+
+Repo: https://github.com/yanyandiaz860-spec/koki-co-brand-portfolio (private: collaborators must be invited).
+
+First-time setup (needs [Git](https://git-scm.com) and [Node.js 18+](https://nodejs.org)):
+
+```bash
+git clone https://github.com/yanyandiaz860-spec/koki-co-brand-portfolio.git
+cd koki-co-brand-portfolio
+npm install
+npm run dev          # open http://localhost:5173
+```
+
+Everyday flow:
+
+```bash
+git pull                          # get the latest changes first
+# ...edit files...
+npm run build                     # make sure it still builds
+git add -A
+git commit -m "Describe your change"
+git push
+```
+
+Where to edit:
+- **Text, flavors, services, owners and image paths:** `src/data/site.ts`
+- **Owner and product photos:** `public/assets/owners/` and `public/assets/products/`, then set `photo:` / `image:` in `src/data/site.ts`
+- **Section layouts:** `src/components/` · **Styles:** `src/styles/`
+
+> Pushing to GitHub does **not** update the live Netlify site by itself (see Deploy below).
+
 ## Project layout
 
 ```
